@@ -59,9 +59,17 @@ let reserved_word_list =
 
 (* work on the tag parser starts here *)
 
-let tag_parse_expression sexpr = raise X_not_yet_implemented;;
+let tag_parse_expression sexpr = 
+  match sexpr with 
+  Bool(sexpr) ->Const(Sexpr(Bool(sexpr)))
+  | _ -> Const(Sexpr(Bool(true)));;
 
 let tag_parse_expressions sexpr = raise X_not_yet_implemented;;
 
   
 end;; (* struct Tag_Parser *)
+
+
+let tester  str = Tag_Parser.tag_parse_expression  (Reader.read_sexpr str);;
+let testerexprs  str = Tag_Parser.tag_parse_expressions  (Reader.read_sexprs str);;
+
